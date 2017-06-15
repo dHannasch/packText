@@ -30,7 +30,7 @@ def pack(directory=os.getcwd(), packedFileName='packedText.txt'):
   for filename in os.listdir(directory):
       if filename[-4:] == '.txt' and filename != packedFileName:
         print('packing', filename)
-        contents = open(filename, 'r').read()
+        contents = open(os.path.join(directory, filename), 'r').read()
         files.append( (filename, contents) )
   with open(packedFileName, 'w') as packedFile:
     packedFile.write(''.join([randomString + '\n' + filename + '\n' + contents for filename,contents in files]) )
